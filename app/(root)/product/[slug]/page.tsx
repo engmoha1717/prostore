@@ -1,4 +1,3 @@
-import NotFoundPage from '@/app/not-found';
 import { getProductBySlug } from '@/lib/actions/product.actions';
 import { Badge } from '@/components/ui/badge';
 import React from 'react'
@@ -7,16 +6,15 @@ import ProductImages from '@/components/shared/product/product-images';
 import Rating from '@/components/shared/product/rating';
 import ProductPrice from '@/components/shared/product/product-price';
 import { Button } from '@/components/ui/button';
+import { notFound } from 'next/navigation';
 
-const ProductDetailsPage = async(props : {
-  params : Promise <{slug : string}>
-}) => {
+const ProductDetailsPage = async(props : {params : Promise <{slug : string}>}) => {
 
    const {slug} =await  props.params;
-   console.log(slug)
 
    const product = await getProductBySlug(slug);
-   if (!product) NotFoundPage();
+    if (!product) notFound();
+ 
   return (
     <>
       <section>

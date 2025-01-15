@@ -10,7 +10,12 @@ export async function getLatestProducts() {
     orderBy: { createdAt: 'desc' },
   });
 
-  return  data
+  // 
+  return data.map((product) => ({
+    ...product,
+    price: product.price.toString(),
+    rating: product.rating.toString(),
+  }));
 }
 
 // Get single product by it's slug

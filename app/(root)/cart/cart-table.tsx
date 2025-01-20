@@ -1,24 +1,31 @@
-"use client"
+'use client';
+import { useRouter } from 'next/navigation';
+import { useToast } from '@/hooks/use-toast';
+import { useTransition } from 'react';
+import { addToCart, removeItemFromCart } from '@/lib/actions/cart.actions';
+import { ArrowRight, Loader, Minus, Plus } from 'lucide-react';
+import { Cart } from '@/types';
+import Link from 'next/link';
+import Image from 'next/image';
+import {
+  Table,
+  TableBody,
+  TableHead,
+  TableHeader,
+  TableRow,
+  TableCell,
+} from '@/components/ui/table';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { formatCurrency } from '@/lib/utils';
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { useToast } from "@/hooks/use-toast";
-import { addToCart, removeItemFromCart } from "@/lib/actions/cart.actions";
-import { formatCurrency } from "@/lib/utils";
-import { Cart } from "@/types";
-import { ArrowRight, Loader, Minus, Plus } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useTransition } from "react";
-
-const  CartTable= ({ cart }: { cart?: Cart }) => {
-    const router = useRouter();
+const CartTable = ({ cart }: { cart?: Cart }) => {
+  const router = useRouter();
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
-    return ( 
-        <>
+
+  return (
+    <>
       <h1 className='py-4 h2-bold'>Shopping Cart</h1>
       {!cart || cart.items.length === 0 ? (
         <div>
@@ -137,7 +144,7 @@ const  CartTable= ({ cart }: { cart?: Cart }) => {
         </div>
       )}
     </>
-     );
-}
- 
-export default CartTable ;
+  );
+};
+
+export default CartTable;

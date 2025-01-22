@@ -11,8 +11,8 @@ export const APP_DESCRIPTION =
 
 
   export const signInDefaultValues = {
-    email: 'admin@example.com',
-    password: '123456',
+    email: '',
+    password: '',
   }
 
   export const signUpDefaultValues = {

@@ -146,7 +146,6 @@ export async function getMyCart() {
   });
 }
 
-
 export async function removeItemFromCart(productId: string) {
   try {
     // Check for cart cookie
